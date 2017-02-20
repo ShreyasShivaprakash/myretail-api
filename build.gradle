@@ -1,0 +1,82 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.1.RELEASE'
+        springFoxVersion = '2.4.0'
+        apacheCommonsLangVersion = '3.4'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+        classpath("net.saliman:gradle-cobertura-plugin:2.2.8")
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'spring-boot'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'cobertura'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+group = 'myretail'
+version = '1.0.0-SNAPSHOT'
+
+configurations {
+    provided
+    compile.extendsFrom provided
+}
+
+
+ext {
+    springBootVersion = '1.5.1.RELEASE'
+}
+
+jar {
+    baseName = 'myretail-api'
+}
+
+repositories {
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+
+    // Compile Dependencies
+    compile "commons-io:commons-io:2.4"
+    compile("org.springframework.boot:spring-boot-starter:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.3.1'
+    compile 'org.apache.commons:commons-lang3:3.4'
+    compile group: 'org.springframework', name: 'spring-messaging', version: '4.2.5.RELEASE'
+    compile "org.springframework.boot:spring-boot-starter-data-mongodb"
+
+    // Test Dependencies
+    testCompile 'org.springframework.boot:spring-boot-starter-test:1.3.3.RELEASE'
+    testCompile 'org.codehaus.groovy:groovy-all:2.3.4'
+    testCompile('org.spockframework:spock-core:1.0-groovy-2.3') {
+        exclude(module: 'groovy-all')
+    }
+    testCompile 'com.squareup.okhttp3:okhttp:3.2.0'
+    testCompile 'cglib:cglib-nodep:3.2.1'
+    testCompile 'org.objenesis:objenesis:2.2'
+
+}
+
+cobertura {
+    coverageFormats = ['html', 'xml']
+}
+
+configurations.all {
+    resolutionStrategy.cacheDynamicVersionsFor 1, 'minutes'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.3'
+}
