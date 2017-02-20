@@ -6,10 +6,10 @@ This RESTful service provides product details from Target Redsky source and pric
 2. MongoDB - NoSQL database to store the product price details
 3. Gradle - Build Tool
 
-#Endpoint URL and Methods:
-GET - http://localhost:8080/myretail/v1/products/{id}
-PUT - http://localhost:8080/myretail/v1/products/{id}
-Content-Type: application/json
+##Endpoint URL and Methods:
+1. GET - http://localhost:8080/myretail/v1/products/{id}
+2. PUT - http://localhost:8080/myretail/v1/products/{id}
+   Content-Type: application/json
 
 #Example: 
 Request - GET
