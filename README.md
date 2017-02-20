@@ -9,11 +9,11 @@ This RESTful service provides product details from Target Redsky source and pric
 ##Endpoint URL and Methods:
 1. GET - http://localhost:8080/myretail/v1/products/{id}
 2. PUT - http://localhost:8080/myretail/v1/products/{id}
-   Content-Type: application/json
 
 #Example: 
 Request - GET
 URL - http://localhost:8080/myretail/v1/products/16696652
+
 Response - 
 ```json
 {
@@ -28,6 +28,7 @@ currency_code: "USD"
 
 Request - PUT
 URL - http://localhost:8080/myretail/v1/products/16696652
+
 Request Body -
 ```json
 {
@@ -64,4 +65,5 @@ Sample document:
 
 # Author
 Name: Shreyas Shivaprakash
+
 Email: shreyas.aradya@gmail.com
